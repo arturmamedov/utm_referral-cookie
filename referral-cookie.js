@@ -1,5 +1,6 @@
 // configuration
-var $hostname = '.your-hostname.here';
+var $hostname = '.your-hostname.here',
+    $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'];
 
 function crumbleCookie(a) {
     for (var d = document.cookie.split(";"), c = {}, b = 0; b < d.length; b++) {
@@ -38,6 +39,24 @@ function writeLogic(n) {
 }
 
 /**
+ * Read cookie saved as url and return object with key=>value
+ *
+ * @param n Name of cookie to read
+ *
+ * @returns object key=>value object of cookie
+ */
+function readLogic(n) {
+    var cookie_string = crumbleCookie()[n], cookie_obj = {}, param;
+
+    for (var key in $cookie_params) {
+        param = $cookie_params[key];
+        cookie_obj[param] = getParam('?' + decodeURIComponent(cookie_string), param);
+    }
+
+    return cookie_obj;
+}
+
+/**
  * Get value of url query string param "?param=value"
  *
  * @param s Url query string "?parma=value"
@@ -56,7 +75,7 @@ function getParam(s, q) {
 }
 
 function calculateTrafficSource() {
-    var source = '', medium = '', campaign = '', term='', content='';
+    var source = '', medium = '', campaign = '', term = '', content = '';
     var search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; //List of search engines
 
     var ref = document.referrer;
@@ -148,15 +167,3 @@ function getTrafficSource(cookieName, hostname) {
         writeLogic('js_referral_returned');
     }
 })();
-
-var session = crumbleCookie('js_referral'),
-    session2 = crumbleCookie('js_referral_returned');
-
-// First time session (only the first time visit)
-if (typeof session != 'undefined') {
-    document.getElementById('js_referral').innerHTML = decodeURIComponent(session);
-}
-// Last time session (ever the last time visit)
-if (typeof session2 != 'undefined') {
-    document.getElementById('js_referral_returned').innerHTML = decodeURIComponent(session2);
-}
