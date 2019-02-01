@@ -57,6 +57,43 @@ function readLogic(n) {
 }
 
 /**
+ * Get Formatted string of cookie Referral
+ *
+ * @param n Cookie name
+ *
+ * @return string Formatted string of Referral
+ */
+function cookieToString(n) {
+    var cookie_obj = readLogic(n);
+
+    if (cookie_obj.source == 'direct') {
+        return 'direct';
+    } else {
+        // open with brackets
+        var attr_value = cookie_obj.source + ' (' + cookie_obj.medium;
+
+        // add campaign name if exist
+        if (typeof cookie_obj.campaign != 'undefined') {
+            attr_value = attr_value + ' | ' + cookie_obj.campaign;
+        }
+        // add campaign term if exist
+        if (typeof cookie_obj.term != 'undefined') {
+            attr_value = attr_value + ' | term: ' + cookie_obj.term;
+        }
+        // add campaign content if exist
+        if (typeof cookie_obj.content != 'undefined') {
+            attr_value = attr_value + ' | content: ' + cookie_obj.content;
+        }
+
+        // close brackets
+        attr_value = attr_value + ')';
+    }
+
+    // return string
+    return attr_value;
+}
+
+/**
  * Get value of url query string param "?param=value"
  *
  * @param s Url query string "?parma=value"

@@ -38,3 +38,22 @@ if (typeof session2 != 'undefined') {
 
 ```  
 
+###### Formats with cookieToString():
+
+- direct
+
+- google (cpc | gclid)
+
+- google (cpc | CampaignName | term: if, set | content: if set)
+
+- newsletter (email | campaignName | term: uno, due, tre | content: content)
+
+- google (organic | term: (not provided))
+
+- someweb.site (referral)
+
+- arianna.libero.it (organic | term: query of search)
+
+- bing.com (organic | term: query of search)
+
+Example: You can use it in a hidden input in forms for submit info about referrals
