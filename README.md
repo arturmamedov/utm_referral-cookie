@@ -1,6 +1,10 @@
-# referral-cookie
-Get traffic refferal sources, utm_parmas cookies (for first time visit and the last one)
+# referral-cookie.js
+Get traffic refferal sources, utm_params and save to cookies (for __first time visit__ and the __last one__)
 
+Demo: https://arturmamedov.github.io/referral-cookie/index.html
+
+
+-------------------
 
 
 Create one or two cookies with referral sources of user that visit the website
