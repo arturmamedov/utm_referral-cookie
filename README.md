@@ -56,4 +56,6 @@ if (typeof session2 != 'undefined') {
 
 - bing.com (organic | term: query of search)
 
+- also: yahoo, yandex, baidu, ask, virgilio `(organic)` you can configure $search_engines
+
 Example: You can use it in a hidden input in forms for submit info about referrals

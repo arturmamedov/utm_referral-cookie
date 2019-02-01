@@ -1,6 +1,7 @@
 // configuration
 var $hostname = '.your-hostname.here',
-    $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'];
+    $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'],
+    $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; //List of search engines;
 
 function crumbleCookie(a) {
     for (var d = document.cookie.split(";"), c = {}, b = 0; b < d.length; b++) {
@@ -113,7 +114,6 @@ function getParam(s, q) {
 
 function calculateTrafficSource() {
     var source = '', medium = '', campaign = '', term = '', content = '';
-    var search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; //List of search engines
 
     var ref = document.referrer;
     ref = ref.substr(ref.indexOf('//') + 2);
@@ -153,11 +153,11 @@ function calculateTrafficSource() {
         medium = 'referral';
         source = ref_domain;
         // Extract term for organic source
-        for (var i = 0; i < search_engines.length; i++) {
-            if (ref_domain.indexOf(search_engines[i][0]) > -1) {
+        for (var i = 0; i < $search_engines.length; i++) {
+            if (ref_domain.indexOf($search_engines[i][0]) > -1) {
                 medium = 'organic';
-                source = search_engines[i][0];
-                term = getParam(ref_search, search_engines[i][1]) || '(not provided)';
+                source = $search_engines[i][0];
+                term = getParam(ref_search, $search_engines[i][1]) || '(not provided)';
                 break;
             }
         }
