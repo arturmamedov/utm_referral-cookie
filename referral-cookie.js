@@ -148,3 +148,15 @@ function getTrafficSource(cookieName, hostname) {
         writeLogic('js_referral_returned');
     }
 })();
+
+var session = crumbleCookie('js_referral'),
+    session2 = crumbleCookie('js_referral_returned');
+
+// First time session (only the first time visit)
+if (typeof session != 'undefined') {
+    document.getElementById('js_referral').innerHTML = decodeURIComponent(session);
+}
+// Last time session (ever the last time visit)
+if (typeof session2 != 'undefined') {
+    document.getElementById('js_referral_returned').innerHTML = decodeURIComponent(session2);
+}

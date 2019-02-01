@@ -1,0 +1,59 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>referral-cookies | Track and save the sources of your visitors</title>
+
+    <meta name="description" content="Create one or two cookies with referral sources of user that visit the website">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+    <div style="margin: 100px auto;" class="container">
+        <div style="width: 40%; float: left;">
+            <h3>Output of first time suorce <code>`js_referral`</code></h3>
+
+            <p id="js_referral"></p>
+        </div>
+
+        <div style="width: 40%; float: right;">
+            <h3>Output of last time source <code>`js_referral_returned`</code></h3>
+
+            <p id="js_referral_returned"></p>
+        </div>
+
+        <hr style="clear: both; float: none;">
+
+        <p style="color: #999; text-align: center;">Used decodeURIComponent(...) for decode cookie content</p>
+    </div>
+</body>
+
+<script src="referral-cookie.js"></script>
