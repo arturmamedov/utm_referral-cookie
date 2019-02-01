@@ -1,7 +1,10 @@
 // configuration
 var $hostname = '.your-hostname.here',
-    $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'],
-    $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; //List of search engines;
+    $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'];
+
+    var $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; //List of search engines;
+    var $socials = [['facebook'], ['twitter'], ['instagram'], ['flickr'], ['tumblr'], ['youtube'], ['vimeo'], ['pinterest']]; // List of socials ['plus.google'], ['plus.url.google'],
+
 
 function crumbleCookie(a) {
     for (var d = document.cookie.split(";"), c = {}, b = 0; b < d.length; b++) {
@@ -161,6 +164,15 @@ function calculateTrafficSource() {
                 break;
             }
         }
+        // Or maybe it social
+        for (var i = 0; i < $socials.length; i++) {
+            if (ref_domain.indexOf($socials[i][0]) > -1) {
+                medium = 'social';
+                source = $socials[i][0];
+                break;
+            }
+        }
+        // else it normal website referral
     }
 
     return {

@@ -42,6 +42,8 @@ if (typeof session2 != 'undefined') {
 
 - direct
 
+- someweb.site (referral)
+
 - google (cpc | gclid)
 
 - google (cpc | CampaignName | term: if, set | content: if set)
@@ -50,12 +52,16 @@ if (typeof session2 != 'undefined') {
 
 - google (organic | term: (not provided))
 
-- someweb.site (referral)
-
 - arianna.libero.it (organic | term: query of search)
 
 - bing.com (organic | term: query of search)
 
 - also: yahoo, yandex, baidu, ask, virgilio `(organic)` you can configure $search_engines
+
+- facebook (social)
+
+- instagram (social)
+
+- also: twitter, flickr, tumblr, vimeo, youtube, pinterest `social` you can configure $socials
 
 Example: You can use it in a hidden input in forms for submit info about referrals
