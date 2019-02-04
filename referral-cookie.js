@@ -1,5 +1,5 @@
 // configuration
-var $hostname = 'your-hostname.here',
+var $hostname = 'arturmamedov.github.io', // your-hostname-goes.here
     $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'];
 
     var $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; //List of search engines;
