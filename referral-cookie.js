@@ -1,5 +1,5 @@
 // configuration
-var $hostname = '.your-hostname.here',
+var $hostname = 'your-hostname.here',
     $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'];
 
     var $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; //List of search engines;
@@ -33,7 +33,11 @@ function bakeCookie(a, d, c, b, e, i) {
  * @return void
  */
 function writeLogic(n) {
-    var a = getTrafficSource(n, $hostname);
+    var a = getTrafficSource(n, '.'+$hostname);
+    // false if same domain referrer, so not save it
+    if (a === false) {
+        return false;
+    }
 
     a = a.replace(/\|{2,}/g, "|");
     a = a.replace(/^\|/, "");
@@ -152,6 +156,11 @@ function calculateTrafficSource() {
         campaign = 'gclid';
     }
     else if (ref) {
+        // if same domain referrer, not save it
+        if (ref.indexOf($hostname) > -1) {
+            return false;
+        }
+
         // separate domain, path and query parameters
         if (ref.indexOf('/') > -1) {
             ref_domain = ref.substr(0, ref.indexOf('/'));
@@ -194,6 +203,11 @@ function calculateTrafficSource() {
 
 function getTrafficSource(cookieName, hostname) {
     var trafficSources = calculateTrafficSource();
+    // false if same domain referrer, so not save it
+    if (trafficSources === false) {
+        return false;
+    }
+
     var source = trafficSources.source.length === 0 ? 'direct' : trafficSources.source;
     var medium = trafficSources.medium.length === 0 ? 'none' : trafficSources.medium;
     var campaign = trafficSources.campaign.length === 0 ? 'direct' : trafficSources.campaign;
