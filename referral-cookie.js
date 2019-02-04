@@ -52,6 +52,10 @@ function writeLogic(n) {
 function readLogic(n) {
     var cookie_string = crumbleCookie()[n], cookie_obj = {}, param;
 
+    if (typeof cookie_string == 'undefined') {
+        return cookie_string;
+    }
+
     for (var key in $cookie_params) {
         param = $cookie_params[key];
         cookie_obj[param] = getParam('?' + decodeURIComponent(cookie_string), param);
@@ -70,6 +74,10 @@ function readLogic(n) {
 function cookieToString(n) {
     var cookie_obj = readLogic(n);
 
+    if (typeof cookie_obj == 'undefined') {
+        return cookie_obj;
+    }
+
     if (cookie_obj.source == 'direct') {
         return 'direct';
     } else {
@@ -77,15 +85,15 @@ function cookieToString(n) {
         var attr_value = cookie_obj.source + ' (' + cookie_obj.medium;
 
         // add campaign name if exist
-        if (typeof cookie_obj.campaign != 'undefined') {
+        if (typeof cookie_obj.campaign != 'undefined' && cookie_obj.campaign.length) {
             attr_value = attr_value + ' | ' + cookie_obj.campaign;
         }
         // add campaign term if exist
-        if (typeof cookie_obj.term != 'undefined') {
+        if (typeof cookie_obj.term != 'undefined' && cookie_obj.term.length) {
             attr_value = attr_value + ' | term: ' + cookie_obj.term;
         }
         // add campaign content if exist
-        if (typeof cookie_obj.content != 'undefined') {
+        if (typeof cookie_obj.content != 'undefined' && cookie_obj.content.length) {
             attr_value = attr_value + ' | content: ' + cookie_obj.content;
         }
 
