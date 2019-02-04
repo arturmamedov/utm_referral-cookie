@@ -1,8 +1,8 @@
 // configuration
 var $hostname = 'arturmamedov.github.io', // your-hostname-goes.here
-    $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'];
+    $cookie_params = ['source', 'medium', 'campaign', 'term', 'content']; // Params you want to save in cookie
 
-    var $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; //List of search engines;
+    var $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'], ['yandex', 'q'], ['ask', 'q'], ['libero.it', 'qs'], ['virgilio.it', 'q']]; // List of search engines
     var $socials = [['facebook'], ['twitter'], ['instagram'], ['flickr'], ['tumblr'], ['youtube'], ['vimeo'], ['pinterest']]; // List of socials ['plus.google'], ['plus.url.google'],
 
 

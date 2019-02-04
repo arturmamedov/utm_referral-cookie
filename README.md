@@ -8,6 +8,30 @@ Demo with specified params: [index.html?utm_source=GitHub&utm_medium=affiliate&u
 
 -------------------
 
+#### Insert into page, and configure
+
+```js
+// Inside file configure this thing:
+
+// * Required
+$hostname = 'arturmamedov.github.io', // your-hostname-goes.here
+
+// [] Optional
+// Params you want to save in cookie
+$cookie_params = ['source', 'medium', 'campaign', 'term', 'content'];
+
+// List of search engines to track like organic referral
+var $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'] ];
+
+// List of socials to track like social referral
+var $socials = [['facebook'], ['twitter'], ['instagram'], ...];
+```
+
+```html
+<!-- And simply add to page -->
+<script src="referral-cookie.js"></script>
+```
+
 
 Create one or two cookies with referral sources of user that visit the website
 
