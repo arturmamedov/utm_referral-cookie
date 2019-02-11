@@ -1,5 +1,8 @@
-# referral-cookie.js
-Get traffic refferal sources, utm_params and save to cookies (for __first time visit__ and the __last one__)
+# UTM and Referral Cookie 
+###### (utm_referral-cookie.js)
+Get traffic referral sources or utm_params and save it to cookies (for __first time visit__ and the __last one__)
+
+&nbsp;
 
 Demo: https://arturmamedov.github.io/referral-cookie/index.html
 
@@ -21,7 +24,7 @@ $hostname = 'arturmamedov.github.io', // your-hostname-goes.here
 $cookie_params = ['source', 'medium', 'campaign', 'term', 'content'];
 
 // List of search engines to track like organic referral
-var $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'] ];
+var $search_engines = [['bing', 'q'], ['google', 'q'], ['yahoo', 'q'], ['baidu', 'q'] ...];
 
 // List of socials to track like social referral
 var $socials = [['facebook'], ['twitter'], ['instagram'], ...];
@@ -29,7 +32,7 @@ var $socials = [['facebook'], ['twitter'], ['instagram'], ...];
 
 ```html
 <!-- And simply add to page -->
-<script src="referral-cookie.js"></script>
+<script src="utm_referral-cookie.js"></script>
 ```
 
 
