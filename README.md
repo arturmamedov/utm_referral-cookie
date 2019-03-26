@@ -53,6 +53,7 @@ Create one or two cookies with referral sources of user that visit the website
 
 
 ##### For read cookies you can use:
+at the bottom of this doc there a more practic code yet ready for use
 
 ```js
 
@@ -125,6 +126,23 @@ So if you want some link to be tracked as referral for save it, you need to defi
 <!-- Will be: internal (website | page) -->
 ``` 
 
+
+#### General code for get booth cookies 
+if it set and if the script is present on page
+
+```javascript
+// Add js_referral to mail - depends on https://github.com/arturmamedov/utm_referral-cookie
+if (typeof cookieToString != 'undefined' && typeof cookieToString('js_referral') != 'undefined') {
+    var js_referral_returned = '';
+    if (typeof cookieToString('js_referral_returned') != 'undefined') {
+        js_referral_returned = ' - Referral 2: ' + cookieToString('js_referral_returned');
+    }
+    var utm_referral = cookieToString('js_referral') + js_referral_returned;
+
+    var with_booth_cookies = utm_referral; // or only one, it depend what cookies are yet set
+}
+
+```
 
 ---
 
