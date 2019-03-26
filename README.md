@@ -8,6 +8,14 @@ Demo: https://arturmamedov.github.io/referral-cookie/index.html
 
 Demo with specified params: [index.html?utm_source=GitHub&utm_medium=affiliate&utm_campaign=user123](https://arturmamedov.github.io/referral-cookie/index.html?utm_source=GitHub&utm_medium=affiliate&utm_campaign=user123)
 
+&nbsp;
+
+### Installation
+
+##### Bower
+```
+bower install withFront --save
+```
 
 -------------------
 
@@ -41,7 +49,7 @@ Create one or two cookies with referral sources of user that visit the website
 | Cookie name   | Purpose       |
 | :------------ |:--------------|
 | `js_referral` | the __first visit__ of user, remain the same at every successive visit |
-| `js_referral_returned` | the __last user visit__, change every time the user visit website *(when referral is on a different domain or `utm_ params` are set)* |
+| `js_referral_returned` | the __last user visit__, change every time the user visit website *(when referral is on a different domain or `utm_params` are set)* |
 
 
 ##### For read cookies you can use:
@@ -77,7 +85,7 @@ if (typeof session2 != 'undefined') {
 
 ```  
 
-###### Formats with cookieToString():
+##### Formats with `cookieToString()`:
 
 - direct
 

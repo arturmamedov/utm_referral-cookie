@@ -1,0 +1,26 @@
+{
+  "name": "utm_referral-cookie",
+  "homepage": "https://github.com/arturmamedov/utm_referral-cookie",
+  "authors": [
+    "Artur Mamedov <arturmamedov1993@gmail.com>"
+  ],
+  "description": "Get traffic refferal sources, utm_params and save to cookies (for first time visit and the last one)",
+  "main": "utm_referral-cookie.js",
+  "keywords": [
+    "utm",
+    "utmcampaign",
+    "cookie",
+    "utmcookie",
+    "referral",
+    "jsreferral",
+    "refferal"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
