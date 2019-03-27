@@ -14,7 +14,7 @@ Demo with specified params: [index.html?utm_source=GitHub&utm_medium=affiliate&u
 
 ##### Bower
 ```
-bower install withFront --save
+bower install utm_referral-cookie --save
 ```
 
 -------------------
