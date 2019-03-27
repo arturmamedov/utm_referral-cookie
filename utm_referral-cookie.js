@@ -229,12 +229,12 @@ function getTrafficSource(cookieName, hostname) {
 
 // Self-invoking function
 (function () {
-    var session = crumbleCookie()['js_referral'];
+    var session = crumbleCookie()['utm_referral'];
 
     // First time session
     if (typeof session == 'undefined') {
-        writeLogic('js_referral');
+        writeLogic('utm_referral');
     } else {
-        writeLogic('js_referral_returned');
+        writeLogic('utm_referral_returned');
     }
 })();

@@ -38,26 +38,26 @@
 <![endif]-->
 
     <div style="margin: 50px auto; text-align: center;" class="container">
-        <h1>referral-cookie.js</h1>
-        <h4>Get traffic refferal sources, utm_params and save to cookies (for first time visit and the last one)</h4>
+        <h1>utm_referral-cookie.js</h1>
+        <h4>Get traffic referral sources, utm_params and save to cookies (for first time visit and the last one)</h4>
         <a href="referral_page.html">Referral Page</a>
     </div>
 
     <div style="margin: 50px auto;" class="container">
         <div style="width: 40%; min-width: 200px; float: left;">
-            <h3>Output of first time suorce <code>`js_referral`</code></h3>
+            <h3>Output of first time suorce <code>`utm_referral`</code></h3>
 
-            <p id="js_referral"></p>
+            <p id="utm_referral"></p>
             <hr>
-            <p id="js_referral_frmt"></p>
+            <p id="utm_referral_frmt"></p>
         </div>
 
         <div style="width: 40%; min-width: 200px; float: right;">
-            <h3>Output of last time source <code>`js_referral_returned`</code></h3>
+            <h3>Output of last time source <code>`utm_referral_returned`</code></h3>
 
-            <p id="js_referral_returned"></p>
+            <p id="utm_referral_returned"></p>
             <hr>
-            <p id="js_referral_returned_frmt"></p>
+            <p id="utm_referral_returned_frmt"></p>
         </div>
 
         <hr style="clear: both; float: none;">
@@ -73,31 +73,31 @@
     /* For test purpose, you can get the cookie params in this way */
 
     // this return the cookie as it is (so you must decode it fo read)
-    var session = crumbleCookie('js_referral'),
-        session2 = crumbleCookie('js_referral_returned');
+    var session = crumbleCookie('utm_referral'),
+        session2 = crumbleCookie('utm_referral_returned');
 
     // First time session (only the first time visit)
     if (typeof session != 'undefined') {
         // use decodeURIComponent(...) for get the full cookie string
-        document.getElementById('js_referral').innerHTML = decodeURIComponent(session);
+        document.getElementById('utm_referral').innerHTML = decodeURIComponent(session);
 
         // use readLogic('cookie_name') for retrieve object with configured $cookie_params
-        console.log(readLogic('js_referral')); // object {source, medium, campaign, term, content}
+        console.log(readLogic('utm_referral')); // object {source, medium, campaign, term, content}
 
         // use cookieToString(...) for format to string
-        console.log(cookieToString('js_referral')); // formatted string "source (medium | campaign | term: term | content: content)"
-        document.getElementById('js_referral_frmt').innerText = cookieToString('js_referral');
+        console.log(cookieToString('utm_referral')); // formatted string "source (medium | campaign | term: term | content: content)"
+        document.getElementById('utm_referral_frmt').innerText = cookieToString('utm_referral');
     }
     // Last time session (ever the last time visit)
     if (typeof session2 != 'undefined') {
         // use decodeURIComponent(...) for get the full cookie string
-        document.getElementById('js_referral_returned').innerHTML = decodeURIComponent(session2);
+        document.getElementById('utm_referral_returned').innerHTML = decodeURIComponent(session2);
 
         // use readLogic('cookie_name') for retrieve object with configured $cookie_params
-        console.log(readLogic('js_referral_returned')); // object {source, medium, campaign, term, content}
+        console.log(readLogic('utm_referral_returned')); // object {source, medium, campaign, term, content}
 
         // use cookieToString(...) for format to string
-        console.log(cookieToString('js_referral_returned')); // formatted string "source (medium | campaign | term: term | content: content)"
-        document.getElementById('js_referral_returned_frmt').innerText = cookieToString('js_referral_returned');
+        console.log(cookieToString('utm_referral_returned')); // formatted string "source (medium | campaign | term: term | content: content)"
+        document.getElementById('utm_referral_returned_frmt').innerText = cookieToString('utm_referral_returned');
     }
 </script>

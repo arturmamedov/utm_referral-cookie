@@ -48,8 +48,8 @@ Create one or two cookies with referral sources of user that visit the website
 
 | Cookie name   | Purpose       |
 | :------------ |:--------------|
-| `js_referral` | the __first visit__ of user, remain the same at every successive visit |
-| `js_referral_returned` | the __last user visit__, change every time the user visit website *(when referral is on a different domain or `utm_params` are set)* |
+| `utm_referral` | the __first visit__ of user, remain the same at every successive visit |
+| `utm_referral_returned` | the __last user visit__, change every time the user visit website *(when referral is on a different domain or `utm_params` are set)* |
 
 
 ##### For read cookies you can use:
@@ -58,30 +58,30 @@ at the bottom of this doc there a more practic code yet ready for use
 ```js
 
 // this return the cookie as it is (so you must decode it fo read)
-var session = crumbleCookie('js_referral'), // encoded cookie with all params
-    session2 = crumbleCookie('js_referral_returned');
+var session = crumbleCookie('utm_referral'), // encoded cookie with all params
+    session2 = crumbleCookie('utm_referral_returned');
 
 // First time session (only the first time visit)
 if (typeof session != 'undefined') {
     // use decodeURIComponent(...) for get decoded full cookie string 
-    document.getElementById('js_referral').innerHTML = decodeURIComponent(session);
+    document.getElementById('utm_referral').innerHTML = decodeURIComponent(session);
     
     // use readLogic('cookie_name') for retrieve object with configured $cookie_params
-    console.log(readLogic('js_referral')); 
+    console.log(readLogic('utm_referral')); 
     
     // use cookieToString(...) for format to string
-    console.log(cookieToString('js_referral')); // formatted string "source (medium | campaign | term: term | content: content)"
+    console.log(cookieToString('utm_referral')); // formatted string "source (medium | campaign | term: term | content: content)"
 }
 // Last time session (ever the last time visit)
 if (typeof session2 != 'undefined') {
     // use decodeURIComponent(...) for get decoded full cookie string
-    document.getElementById('js_referral_returned').innerHTML = decodeURIComponent(session2);
+    document.getElementById('utm_referral_returned').innerHTML = decodeURIComponent(session2);
     
     // use readLogic('cookie_name') for retrieve object with configured $cookie_params
-    console.log(readLogic('js_referral_returned')); // object {source, medium, campaign, term, content}
+    console.log(readLogic('utm_referral_returned')); // object {source, medium, campaign, term, content}
     
     // use cookieToString(...) for format to string
-    console.log(cookieToString('js_referral_returned')); // formatted string "source (medium | campaign | term: term | content: content)"
+    console.log(cookieToString('utm_referral_returned')); // formatted string "source (medium | campaign | term: term | content: content)"
 }
 
 ```  
@@ -131,13 +131,13 @@ So if you want some link to be tracked as referral for save it, you need to defi
 if it set and if the script is present on page
 
 ```javascript
-// Add js_referral to mail - depends on https://github.com/arturmamedov/utm_referral-cookie
-if (typeof cookieToString != 'undefined' && typeof cookieToString('js_referral') != 'undefined') {
-    var js_referral_returned = '';
-    if (typeof cookieToString('js_referral_returned') != 'undefined') {
-        js_referral_returned = ' - Referral 2: ' + cookieToString('js_referral_returned');
+// Add utm_referral to mail - depends on https://github.com/arturmamedov/utm_referral-cookie
+if (typeof cookieToString != 'undefined' && typeof cookieToString('utm_referral') != 'undefined') {
+    var utm_referral_returned = '';
+    if (typeof cookieToString('utm_referral_returned') != 'undefined') {
+        utm_referral_returned = ' - Referral 2: ' + cookieToString('utm_referral_returned');
     }
-    var utm_referral = cookieToString('js_referral') + js_referral_returned;
+    var utm_referral = cookieToString('utm_referral') + utm_referral_returned;
 
     var with_booth_cookies = utm_referral; // or only one, it depend what cookies are yet set
 }
