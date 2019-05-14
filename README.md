@@ -131,17 +131,54 @@ So if you want some link to be tracked as referral for save it, you need to defi
 if it set and if the script is present on page
 
 ```javascript
+// JavaScript output:   Referral: google (organic | direct) Referral 2: facebook (cpc | your_campaign) 
+
 // Add utm_referral to mail - depends on https://github.com/arturmamedov/utm_referral-cookie
 if (typeof cookieToString != 'undefined' && typeof cookieToString('utm_referral') != 'undefined') {
     var utm_referral_returned = '';
     if (typeof cookieToString('utm_referral_returned') != 'undefined') {
         utm_referral_returned = ' - Referral 2: ' + cookieToString('utm_referral_returned');
     }
-    var utm_referral = cookieToString('utm_referral') + utm_referral_returned;
+    var utm_referral = 'Referral: ' + cookieToString('utm_referral') + utm_referral_returned;
 
     var with_booth_cookies = utm_referral; // or only one, it depend what cookies are yet set
 }
 
+```
+
+```php
+// PHP output: Referral: google (organic | direct) 
+// 		Referral 2: direct  
+// in HTML: <p><span class="lbl">Referral: </span><b class="value">google (organic | direct)</b><br>Referral 2: direct</p
+
+// utm_referral cookie
+if ($_COOKIE['utm_referral']) {
+    // utm_referral_returned cookie
+    $utm_referral_returned = '';
+    if ($_COOKIE['utm_referral_returned']) {
+        // format cookie that are an url
+        $frmt = [];
+        parse_str($_COOKIE['utm_referral_returned'], $frmt);
+        $utm_referral_returned = "<br>Referral 2: {$frmt['source']} ({$frmt['medium']}";
+        $utm_referral_returned .= ($frmt['campaign']) ? " | {$frmt['campaign']})" : ")"; // add campaign name and/or close bracket
+        $utm_referral_returned = ($frmt['source'] == 'direct') ? '<br>Referral 2: direct' : $utm_referral_returned; // override if direct only
+    }
+
+    // create formatted output
+    $frmt = [];
+    parse_str($_COOKIE['utm_referral'], $frmt);
+    $formatted = "{$frmt['source']} ({$frmt['medium']}";
+    $formatted .= ($frmt['campaign']) ? " | {$frmt['campaign']})" : ")"; // add campaign name and/or close bracket
+    $formatted = ($frmt['source'] == 'direct') ? 'direct' : $formatted; // override if direct only
+
+    $message .= '<p>';
+    $message .= '<span class="lbl">Referral: </span>';
+    $message .= '<b class="value">'.$formatted.'</b>'.$utm_referral_returned;
+    $message .= '</p>';
+}
+
+return $message;
+}
 ```
 
 ---
