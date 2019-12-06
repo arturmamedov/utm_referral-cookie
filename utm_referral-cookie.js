@@ -238,3 +238,18 @@ function getTrafficSource(cookieName, hostname) {
         writeLogic('utm_referral_returned');
     }
 })();
+
+
+
+// Automatically add utm_referral to hidden input if isset
+if (typeof cookieToString('utm_referral') != 'undefined' && document.getElementById('utm_referral-input') != null) {
+    var utm_referral_returned = '';
+    if (typeof cookieToString('utm_referral_returned') != 'undefined') {
+        utm_referral_returned = ' - Referral 2: ' + cookieToString('utm_referral_returned');
+    }
+    var utm_referral = 'Referral 1: '+ cookieToString('utm_referral') + utm_referral_returned;
+
+    var with_booth_cookies = utm_referral; // or only one, it depend what cookies are yet set
+
+    document.getElementById('utm_referral-input').value = with_booth_cookies;
+}

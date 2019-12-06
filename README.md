@@ -51,6 +51,14 @@ Create one or two cookies with referral sources of user that visit the website
 | `utm_referral` | the __first visit__ of user, remain the same at every successive visit |
 | `utm_referral_returned` | the __last user visit__, change every time the user visit website *(when referral is on a different domain or `utm_params` are set)* |
 
+### Now it also add automatically to a hidden input if defined
+So you can not care about how to print data, simply create input with id #utm_referral-input
+
+```
+<input name="utm_referral-cookie" id="utm_referral-input" type="hidden" value="" />
+
+<!-- example: value="Referral 1: google (cpc | gclid) - Referral 2: direct" -->
+```
 
 ##### For read cookies you can use:
 at the bottom of this doc there a more practic code yet ready for use
