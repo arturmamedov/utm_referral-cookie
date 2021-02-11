@@ -4,9 +4,9 @@ Get traffic referral sources or utm_params and save it to cookies (for __first t
 
 &nbsp;
 
-Demo: https://arturmamedov.github.io/referral-cookie/index.html
+Demo: https://arturmamedov.github.io/utm_referral-cookie/index.html
 
-Demo with specified params: [index.html?utm_source=GitHub&utm_medium=affiliate&utm_campaign=user123](https://arturmamedov.github.io/referral-cookie/index.html?utm_source=GitHub&utm_medium=affiliate&utm_campaign=user123)
+Demo with specified params: [index.html?utm_source=GitHub&utm_medium=affiliate&utm_campaign=user123](https://arturmamedov.github.io/utm_referral-cookie/index.html?utm_source=GitHub&utm_medium=affiliate&utm_campaign=user123)
 
 &nbsp;
 
